@@ -1,3 +1,4 @@
+import './RollDice.css';
 import React, { Component } from 'react';
 import Die from './Die';
 
@@ -20,10 +21,14 @@ export default class RollDice extends Component {
 
   render() {
     return (
-      <div>
-        <Die number={this.state.dice1} />
-        <Die number={this.state.dice2} />
-        <button onClick={this.rollDice}>Roll Dice!</button>
+      <div className='RollDice'>
+        <div className='RollDice-dices'>
+          <Die number={this.state.dice1} />
+          <Die number={this.state.dice2} />
+        </div>
+        <button onClick={this.rollDice} className='RollDice-btn'>
+          Roll Dice!
+        </button>
       </div>
     );
   }
