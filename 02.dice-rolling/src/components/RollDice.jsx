@@ -2,33 +2,30 @@ import './RollDice.css';
 import React, { Component } from 'react';
 import Die from './Die';
 
-function genRandomDice() {
-  return Math.floor(Math.random() * 6) + 1;
-}
-
 export default class RollDice extends Component {
-  state = {
-    dice1: 1,
-    dice2: 1,
+  static defaultProps = {
+    sides: ['one', 'two', 'three', 'four', 'five', 'six'],
   };
 
-  rollDice = () => {
-    this.setState({
-      dice1: genRandomDice(),
-      dice2: genRandomDice(),
-    });
+  state = { die1: 'one', die2: 'one' };
+
+  roll = () => {
+    const newDie1 = this.props.sides[
+      Math.floor(Math.random() * this.props.sides.length)
+    ];
+    const newDie2 = this.props.sides[
+      Math.floor(Math.random() * this.props.sides.length)
+    ];
+
+    this.setState({ die1: newDie1, die2: newDie2 });
   };
 
   render() {
     return (
-      <div className='RollDice'>
-        <div className='RollDice-dices'>
-          <Die face='five' />
-          <Die face='one' />
-        </div>
-        <button onClick={this.rollDice} className='RollDice-btn'>
-          Roll Dice!
-        </button>
+      <div>
+        <Die face={this.state.die1} />
+        <Die face={this.state.die2} />
+        <button onClick={this.roll}>Roll Dice!</button>
       </div>
     );
   }
