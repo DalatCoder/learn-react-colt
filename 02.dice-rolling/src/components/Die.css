@@ -1,8 +1,5 @@
-.Dice {
-  margin: 10px;
-}
-
-.Die .fas {
-  font-size: 200px;
-  color: aquamarine;
+.Die {
+  font-size: 10em;
+  padding: 0.25em;
+  color: slateblue;
 }

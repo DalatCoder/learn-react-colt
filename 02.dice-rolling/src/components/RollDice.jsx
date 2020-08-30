@@ -23,8 +23,8 @@ export default class RollDice extends Component {
     return (
       <div className='RollDice'>
         <div className='RollDice-dices'>
-          <Die number={this.state.dice1} />
-          <Die number={this.state.dice2} />
+          <Die face='five' />
+          <Die face='one' />
         </div>
         <button onClick={this.rollDice} className='RollDice-btn'>
           Roll Dice!
