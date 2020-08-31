@@ -12,32 +12,36 @@ export default class Lottery extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nums: Array(this.props.numBalls).fill(0),
+      nums: Array(this.props.numBalls).fill(null),
     };
-    this.onButtonClick = this.onButtonClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  onButtonClick() {
-    const newRandNums = this.state.nums.map(() =>
-      Math.floor(Math.random() * this.props.maxNum)
-    );
+  generate() {
+    this.setState((curState) => ({
+      nums: curState.nums.map(
+        () => Math.floor(Math.random() * this.props.maxNum) + 1
+      ),
+    }));
+  }
 
-    this.setState({ nums: newRandNums });
+  handleClick() {
+    this.generate();
   }
 
   render() {
     return (
-      <div className='Lottery'>
+      <section className='Lottery'>
         <h1 className='Lottery-title'>{this.props.title}</h1>
         <div className='Lottery-balls'>
           {this.state.nums.map((num) => (
             <LotteryBall num={num} />
           ))}
         </div>
-        <button className='Lottery-button' onClick={this.onButtonClick}>
+        <button className='Lottery-button' onClick={this.handleClick}>
           Generate
         </button>
-      </div>
+      </section>
     );
   }
 }

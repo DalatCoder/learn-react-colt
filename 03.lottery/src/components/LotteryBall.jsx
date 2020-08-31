@@ -3,15 +3,15 @@ import React, { Component } from 'react';
 export default class LotteryBall extends Component {
   render() {
     const styles = {
-      width: '40px',
-      height: '40px',
+      width: '3em',
+      height: '3em',
       backgroundColor: 'pink',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: '50%',
       fontWeight: 'bold',
-      fontSize: '20px',
+      fontSize: '1.5em',
       color: '#333',
       fontFamily: 'sans-serif',
       lineHeight: 0,
