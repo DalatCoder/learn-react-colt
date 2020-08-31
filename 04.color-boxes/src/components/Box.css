@@ -1,0 +1,7 @@
+.Box {
+  flex: 1;
+  flex-basis: 200px;
+  height: 200px;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
