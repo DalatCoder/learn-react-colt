@@ -45,6 +45,17 @@ class Hangman extends Component {
       guessed: st.guessed.add(ltr),
       nWrong: st.nWrong + (st.answer.includes(ltr) ? 0 : 1),
     }));
+
+    if (this.state.nWrong + 1 > this.props.maxWrong) {
+      const finalGuessed = new Set();
+      for (let ch of this.state.answer.split('')) {
+        if (!finalGuessed.has(ch)) {
+          finalGuessed.add(ch);
+        }
+      }
+
+      this.setState({ guessed: finalGuessed });
+    }
   }
 
   /** generateButtons: return array of letter buttons to render */
@@ -69,7 +80,11 @@ class Hangman extends Component {
         <img src={this.props.images[this.state.nWrong]} />
         <p>Number wrong: {this.state.nWrong}</p>
         <p className="Hangman-word">{this.guessedWord()}</p>
-        <p className="Hangman-btns">{this.generateButtons()}</p>
+        {this.state.nWrong <= this.props.maxWrong ? (
+          <p className="Hangman-btns">{this.generateButtons()}</p>
+        ) : (
+          <p>You Lose!</p>
+        )}
       </div>
     );
   }
