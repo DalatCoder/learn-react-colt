@@ -17,7 +17,12 @@ class Hangman extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { nWrong: 0, guessed: new Set(), answer: 'apple' };
+    this.state = {
+      nWrong: 0,
+      guessed: new Set(),
+      answer: 'apple',
+    };
+
     this.handleGuess = this.handleGuess.bind(this);
   }
 
@@ -62,6 +67,7 @@ class Hangman extends Component {
       <div className="Hangman">
         <h1>Hangman</h1>
         <img src={this.props.images[this.state.nWrong]} />
+        <p>Number wrong: {this.state.nWrong}</p>
         <p className="Hangman-word">{this.guessedWord()}</p>
         <p className="Hangman-btns">{this.generateButtons()}</p>
       </div>
