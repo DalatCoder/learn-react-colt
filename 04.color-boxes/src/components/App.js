@@ -185,7 +185,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className='App'>
+      <div className="App">
         {this.state.colors.map((color, index) => (
           <Box
             key={index}
