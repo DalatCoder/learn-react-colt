@@ -17,7 +17,11 @@ class Hangman extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { nWrong: 0, guessed: new Set(), answer: 'apple' };
+    this.state = {
+      nWrong: 0,
+      guessed: new Set(),
+      answer: 'apple',
+    };
     this.handleGuess = this.handleGuess.bind(this);
   }
 
@@ -46,6 +50,7 @@ class Hangman extends Component {
   generateButtons() {
     return 'abcdefghijklmnopqrstuvwxyz'.split('').map((ltr) => (
       <button
+        key={ltr}
         value={ltr}
         onClick={this.handleGuess}
         disabled={this.state.guessed.has(ltr)}
